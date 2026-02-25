@@ -54,7 +54,7 @@ The system includes AI-powered document understanding using the Gemini API, enab
 - AI Prompt Example(User can ask question about any license by uploading the file)
 
    <p align="center">
-  <img src="Screenshots/AI_Prompt_Example.png" width="900"/>
+  <img src="Screenshots/AI_Promt_Example.png" width="900"/>
 </p>
 
 - AI Response (This image is showcasing how the the AI Responds)
@@ -72,7 +72,7 @@ The system includes AI-powered document understanding using the Gemini API, enab
 - How it Works Section
 
    <p align="center">
-  <img src="Screenshots/How_it_works.png" width="900"/>
+  <img src="Screenshots/How_it_works_section.png" width="900"/>
 </p>
 
 ##  Future Improvements
