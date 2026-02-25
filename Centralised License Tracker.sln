@@ -1,9 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36221.1 d17.14
+VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centralised License Tracker", "Centralised License Tracker\Centralised License Tracker.csproj", "{7F62ED7B-B248-4E7D-B6F8-94A425DC4482}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Centralised License Tracker\Screenshots\Add_License.png = Centralised License Tracker\Screenshots\Add_License.png
+		Centralised License Tracker\Screenshots\Admin_Dashboard.png = Centralised License Tracker\Screenshots\Admin_Dashboard.png
+		Centralised License Tracker\Screenshots\AI_Prompt_Example.png = Centralised License Tracker\Screenshots\AI_Prompt_Example.png
+		Centralised License Tracker\Screenshots\AI_Response.png = Centralised License Tracker\Screenshots\AI_Response.png
+		Centralised License Tracker\Screenshots\Homepage.png = Centralised License Tracker\Screenshots\Homepage.png
+		Centralised License Tracker\Screenshots\How_it_works_section.png = Centralised License Tracker\Screenshots\How_it_works_section.png
+		Centralised License Tracker\Screenshots\Key_Features_Section.png = Centralised License Tracker\Screenshots\Key_Features_Section.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
