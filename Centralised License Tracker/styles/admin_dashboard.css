@@ -1,0 +1,142 @@
+﻿
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #3e3e3e, #1c1c1c);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: rgba(20, 20, 20, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+    .navbar .logo {
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+    }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+            .navbar ul li a:hover {
+                color: #ffcc00;
+            }
+
+
+.dashboard-container {
+    width: 90%;
+    margin: 40px auto;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.2);
+    align-items: flex-start;
+}
+
+    .dashboard-container h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #ffcc00;
+    }
+
+    .dashboard-container p {
+        margin-bottom: 20px;
+        color: #ccc;
+    }
+
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+
+.license-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1a1a1a;
+}
+
+    .license-table th, .license-table td {
+        padding: 12px;
+        border: 1px solid #333;
+        text-align: center;
+    }
+
+    .license-table th {
+        background: #262626;
+        color: #ffcc00;
+    }
+
+    .license-table tr:nth-child(even) {
+        background: #141414;
+    }
+
+
+.btn {
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.btn-view {
+    color: #fff;
+    background: #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn.edit {
+    background: #ffc107;
+    color: #000;
+}
+
+.btn.delete {
+    background: #dc3545;
+    color: #fff;
+}
+
+.btn.renew {
+    background: #28a745;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}

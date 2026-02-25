@@ -1,0 +1,2 @@
+C:\Users\Mayank Singh\source\repos\Centralised License Tracker\Centralised License Tracker\obj\Debug\Centralised License Tracker.csproj.AssemblyReference.cache
+C:\Users\Mayank Singh\source\repos\Centralised License Tracker\Centralised License Tracker\obj\Debug\Centralised License Tracker.csproj.CoreCompileInputs.cache
