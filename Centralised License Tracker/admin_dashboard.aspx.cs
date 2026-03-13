@@ -10,8 +10,16 @@ namespace Centralised_License_Tracker
     {
         string connectionString = ConfigurationManager.ConnectionStrings["LicenseDBConnection"].ConnectionString;
 
+        private static readonly string[] AllowedImageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["AdminUser"] == null)
+            {
+                Response.Redirect("login.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {
                 LoadDepartments();
@@ -22,7 +30,7 @@ namespace Centralised_License_Tracker
 
         void LoadProfilePicture()
         {
-            string adminUser = Session["AdminUser"] as string ?? "admin";
+            string adminUser = (string)Session["AdminUser"];
             lblAdminName.Text = adminUser;
 
             string uploadsDir = Server.MapPath("~/uploads/");
@@ -44,8 +52,7 @@ namespace Centralised_License_Tracker
             if (!Directory.Exists(uploadsDir))
                 return null;
 
-            string[] extensions = { ".jpg", ".jpeg", ".png", ".gif" };
-            foreach (string ext in extensions)
+            foreach (string ext in AllowedImageExtensions)
             {
                 string filePath = Path.Combine(uploadsDir, adminUser + "_profile" + ext);
                 if (File.Exists(filePath))
@@ -64,9 +71,8 @@ namespace Centralised_License_Tracker
             }
 
             string extension = Path.GetExtension(fuProfilePic.FileName).ToLower();
-            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
 
-            if (Array.IndexOf(allowedExtensions, extension) < 0)
+            if (Array.IndexOf(AllowedImageExtensions, extension) < 0)
             {
                 lblProfileMsg.Text = "Only image files (.jpg, .jpeg, .png, .gif) are allowed.";
                 lblProfileMsg.CssClass = "profile-msg error";
@@ -88,15 +94,26 @@ namespace Centralised_License_Tracker
                 return;
             }
 
-            string adminUser = Session["AdminUser"] as string ?? "admin";
+            // Validate actual file content by checking magic bytes
+            byte[] header = new byte[8];
+            fuProfilePic.PostedFile.InputStream.Read(header, 0, header.Length);
+            fuProfilePic.PostedFile.InputStream.Position = 0;
+
+            if (!IsValidImageHeader(header))
+            {
+                lblProfileMsg.Text = "The uploaded file is not a valid image.";
+                lblProfileMsg.CssClass = "profile-msg error";
+                return;
+            }
+
+            string adminUser = (string)Session["AdminUser"];
             string uploadsDir = Server.MapPath("~/uploads/");
 
             if (!Directory.Exists(uploadsDir))
                 Directory.CreateDirectory(uploadsDir);
 
             // Remove any existing profile picture for this user
-            string[] existingExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
-            foreach (string ext in existingExtensions)
+            foreach (string ext in AllowedImageExtensions)
             {
                 string existingFile = Path.Combine(uploadsDir, adminUser + "_profile" + ext);
                 if (File.Exists(existingFile))
@@ -110,6 +127,23 @@ namespace Centralised_License_Tracker
             lblProfileMsg.Text = "Profile picture updated successfully!";
             lblProfileMsg.CssClass = "profile-msg success";
             LoadProfilePicture();
+        }
+
+        private static bool IsValidImageHeader(byte[] header)
+        {
+            // JPEG: FF D8 FF
+            if (header[0] == 0xFF && header[1] == 0xD8 && header[2] == 0xFF)
+                return true;
+
+            // PNG: 89 50 4E 47
+            if (header[0] == 0x89 && header[1] == 0x50 && header[2] == 0x4E && header[3] == 0x47)
+                return true;
+
+            // GIF: 47 49 46 38
+            if (header[0] == 0x47 && header[1] == 0x49 && header[2] == 0x46 && header[3] == 0x38)
+                return true;
+
+            return false;
         }
 
         void LoadDepartments()
