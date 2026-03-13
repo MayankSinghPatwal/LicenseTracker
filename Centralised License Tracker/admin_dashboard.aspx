@@ -10,6 +10,21 @@
     
     <form id="form1" runat="server">
         <div class="container">
+            <div class="admin-header">
+                <div class="profile-section">
+                    <div class="profile-pic-wrapper">
+                        <asp:Image ID="imgProfile" runat="server" CssClass="profile-pic" AlternateText="Profile Picture" />
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="admin-name"><asp:Label ID="lblAdminName" runat="server" Text="Admin"></asp:Label></h2>
+                        <div class="profile-upload">
+                            <asp:FileUpload ID="fuProfilePic" runat="server" CssClass="file-upload" />
+                            <asp:Button ID="btnUploadPic" runat="server" Text="Update Picture" CssClass="btn btn-upload" OnClick="btnUploadPic_Click" />
+                        </div>
+                        <asp:Label ID="lblProfileMsg" runat="server" CssClass="profile-msg"></asp:Label>
+                    </div>
+                </div>
+            </div>
             <h1> Admin Panel</h1>
 
             <div class="filter-section">
